@@ -28,7 +28,10 @@ class Main extends Component {
   }
 
   handleOpen = (index) => {
-    this.setState({ open: true, curr: index });
+    this.setState({ 
+      open: true, 
+      curr: index 
+    });
   };
 
   handleClose = () => {
@@ -64,7 +67,8 @@ class Main extends Component {
   update = () => {
     if (this.refs.searchinput.value === "") {
       this.setState({
-        display: items
+        display: items,
+        curr:0,
       })
     }
     else {
@@ -91,6 +95,7 @@ class Main extends Component {
       this.setState({
         display: newdisplay,
         resultsShown: 10,
+        curr:0,
       })
     }
   }
@@ -101,7 +106,6 @@ class Main extends Component {
     items.splice(index,1)
     localStorage.setItem("Notes", JSON.stringify(items));
     this.update()
-
   }
 
   loadMore = () => {
