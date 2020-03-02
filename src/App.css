@@ -1,5 +1,5 @@
 body {
-  background:white;
+  background-image: url("./background.jpg");
   font-family: "palatino"
 }
 .App {
@@ -22,14 +22,15 @@ body {
   color: white;
   display: block;
   margin:auto;
-  margin-top:20px;
+  margin-top:40px;
   height:30px;
   width:125px;
   font-size:18px;
   background:green;
-  border:slategray solid 1px;
+  border:none;
+  border-radius: 2px;
   cursor: pointer;
-  transition:1s;
+  transition:0.3s;
 }
 
 .addBtn:hover{

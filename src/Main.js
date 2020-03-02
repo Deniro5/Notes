@@ -15,11 +15,12 @@ class Main extends Component {
   }
 
   componentDidMount = () => {
-    if (localStorage.getItem("Notes") === null || localStorage.getItem("Notes") === []) {
+    if (localStorage.getItem("Notes") === null || localStorage.getItem("Notes") === [] || localStorage.getItem("Notes") === "") {
       localStorage.setItem("Notes", [])
       items = [];
     }
     else {
+      console.log(localStorage.getItem("Notes"))
       items = JSON.parse(localStorage.getItem("Notes")); 
     }
     this.setState({
