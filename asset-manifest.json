@@ -1,5 +1,5 @@
 {
-  "main.css": "/Notes/static/css/main.7356266a.chunk.css",
+  "main.css": "/Notes/static/css/main.edaaee4d.chunk.css",
   "main.js": "/Notes/static/js/main.82062af2.chunk.js",
   "main.js.map": "/Notes/static/js/main.82062af2.chunk.js.map",
   "runtime~main.js": "/Notes/static/js/runtime~main.7ba9aa76.js",
@@ -7,8 +7,8 @@
   "static/js/2.6f6f70bd.chunk.js": "/Notes/static/js/2.6f6f70bd.chunk.js",
   "static/js/2.6f6f70bd.chunk.js.map": "/Notes/static/js/2.6f6f70bd.chunk.js.map",
   "index.html": "/Notes/index.html",
-  "precache-manifest.9ab40aaffb0404d645b2298d4e3a7ef1.js": "/Notes/precache-manifest.9ab40aaffb0404d645b2298d4e3a7ef1.js",
+  "precache-manifest.4d9df29514440a03a0d739e0878412db.js": "/Notes/precache-manifest.4d9df29514440a03a0d739e0878412db.js",
   "service-worker.js": "/Notes/service-worker.js",
-  "static/css/main.7356266a.chunk.css.map": "/Notes/static/css/main.7356266a.chunk.css.map",
+  "static/css/main.edaaee4d.chunk.css.map": "/Notes/static/css/main.edaaee4d.chunk.css.map",
   "static/media/App.css": "/Notes/static/media/background.d7e2afa8.jpg"
 }
