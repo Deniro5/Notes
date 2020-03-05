@@ -140,7 +140,7 @@ class Main extends Component {
         <input className = "expandedNoteTitle" ref = "expandednotetitle" defaultValue = {this.state.display[this.state.curr].title} /> 
         <div style = {{height: "1px" , width: "90%" , background:"black", margin: "auto", marginTop: "15px"}}/>
         <textarea className = "expandedNoteDescContainer" ref = "expandednotedesc"  defaultValue = {this.state.display[this.state.curr].desc} /> 
-        <img alt = "close" className = "NoteClose" src = "../imgs/cancel.png" onClick = {this.handleExpandedClose.bind(this,this.state.display[this.state.curr].timestamp)}/>
+        <img alt = "close" className = "NoteClose" src = "/imgs/cancel.png" onClick = {this.handleExpandedClose.bind(this,this.state.display[this.state.curr].timestamp)}/>
     </div>
     </Modal>)
 
@@ -170,7 +170,7 @@ class Main extends Component {
             <input ref = "newnotetitle" className = "newNoteTitle" placeholder = "Title"/ >
               <div style = {{height: "1px" , width: "90%" , background:"black", margin: "auto", marginTop: "10px"}}/>
             <textarea ref = "newnotedesc" className = "newNoteDesc" placeholder = "Start writing here..."/ >
-            <img alt = "close" className = "NoteClose" src = "../imgs/cancel.png" onClick = {this.handleNewClose}/>
+            <img alt = "close" className = "NoteClose" src = "/imgs/cancel.png" onClick = {this.handleNewClose}/>
           </div>
         </Modal>
         {this.state.resultsShown < this.state.display.length && <button className = "loadBtn"  onClick = {this.loadMore} > Load More </button>}
