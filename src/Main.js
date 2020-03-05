@@ -3,10 +3,9 @@ import './App.css';
 import Note from "./Note"
 import Modal from '@material-ui/core/Modal';
 
-var items;
-
 class Main extends Component {
   state = {
+    items: [],
     display: [],
     open:false,
     newOpen: false,
@@ -15,16 +14,17 @@ class Main extends Component {
   }
 
   componentDidMount = () => {
+    let items = [];
     if (localStorage.getItem("Notes") === null || localStorage.getItem("Notes") === [] || localStorage.getItem("Notes") === "") {
       localStorage.setItem("Notes", [])
-      items = [];
     }
     else {
       console.log(localStorage.getItem("Notes"))
       items = JSON.parse(localStorage.getItem("Notes")); 
     }
     this.setState({
-      display:items
+      display:items,
+      items:items
     })
   }
 
@@ -48,27 +48,28 @@ class Main extends Component {
     var date = new Date();
     var timestamp = date.getTime()
     var newnote = {"title": this.refs.newnotetitle.value , "desc": this.refs.newnotedesc.value.substring(0,this.refs.newnotedesc.value.length) , "timestamp": timestamp}
-    items.push(newnote)
-    localStorage.setItem("Notes", JSON.stringify(items));
+    let newItems = this.state.items;
+    newItems.push(newnote)
+    localStorage.setItem("Notes", JSON.stringify(newItems));
     this.refs.searchinput.value = ""
-    this.setState({ newOpen: false, display : items });
+    this.setState({ newOpen: false, display : newItems, items: newItems });
   };
 
   handleExpandedClose = (timestamp, e) => {
     //save the changes here
-    var items = JSON.parse(localStorage.getItem("Notes")); 
-    var index = items.map(function(e) { return e.timestamp; }).indexOf(timestamp);
-    items[index].title = this.refs.expandednotetitle.value
-    items[index].desc = this.refs.expandednotedesc.value
-    localStorage.setItem("Notes", JSON.stringify(items));
+    var index = this.state.items.map(function(e) { return e.timestamp; }).indexOf(timestamp);
+    let newItems = this.state.items;
+    newItems[index].title = this.refs.expandednotetitle.value;
+    newItems[index].desc = this.refs.expandednotedesc.value;
+    localStorage.setItem("Notes", JSON.stringify(newItems));
     this.refs.searchinput.value = ""
-    this.setState({ open: false, display : items });
+    this.setState({ open: false, display : newItems , items: newItems });
   };
 
   update = () => {
     if (this.refs.searchinput.value === "") {
       this.setState({
-        display: items,
+        display: this.state.items,
         curr:0,
       })
     }
@@ -77,8 +78,8 @@ class Main extends Component {
       var newdisplay = [];
       var inputlength = this.refs.searchinput.value.length
       var input = this.refs.searchinput.value.toLowerCase()
-      while (count < items.length) {
-        var curritem = items[count]
+      while (count < this.state.items.length) {
+        var curritem = this.state.items[count]
         var start = 0;
         var end = inputlength;
         while (end < curritem.desc.length+1) {
@@ -103,10 +104,14 @@ class Main extends Component {
 
   remove = (timestamp , e) => {
     e.stopPropagation()
-    var index = items.map(function(e) { return e.timestamp; }).indexOf(timestamp);
-    items.splice(index,1)
-    localStorage.setItem("Notes", JSON.stringify(items));
-    this.update()
+    var index = this.state.items.map(function(e) { return e.timestamp; }).indexOf(timestamp);
+    let newItems = this.state.items
+    newItems.splice(index,1)
+    localStorage.setItem("Notes", JSON.stringify(newItems));
+    this.setState({
+      items: newItems
+    }, () => {this.update()} )
+
   }
 
   loadMore = () => {
